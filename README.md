@@ -12,7 +12,7 @@
 * Terraform is designed to provision different infrastructure components.
 * Ansible is a configuration-management and application-deployment tool. 
 * It means that you’ll use Terraform first to create, for example, AWS resources (vpc, subnet and virtual machine) and then use Ansible to install necessary applications on that machine. But by default, these two are separate tools. In order to make them work together, we need to integrate Terraform-managed nodes with Ansible control nodes.
-*  [TerraformAnsible](https://www.hashicorp.com/resources/ansible-terraform-better-together) -- Good page and video explaining why Ansible and HashiCorp are  better together.
+* [TerraformAnsible](https://www.hashicorp.com/resources/ansible-terraform-better-together) - Good page and video explaining why Ansible and HashiCorp are  better together.
 
 
 ## Terraform
@@ -33,4 +33,13 @@
 *  Delete default nginx site
 *  Apply custom nginx
 *  Check virtual machine public ip
-*  Verify if the webpage has been started successfully 
+*  Verify if the webpage has been started successfully
+
+## Setup
+#### To run this project, perform this command lines:
+* In the terrform root folder change the webserver01.tf according your needs.
+* in the ansible roles vars folder, change the server name into main.yaml.
+$ ./terraform/modules/acceptance-ubuntu-vm/ansible/roles/custom_tasks/vars/main.yaml
+$ git clone https://github.com/cz75ww/DemoSession.git
+$ Terraform init
+$ terraform apply --auto-approve
