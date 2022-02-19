@@ -1,0 +1,9 @@
+---
+- name: Applying custom tasks on EC2 instance
+  hosts: all
+  gather_facts: yes
+  remote_user: ubuntu
+  become: yes
+
+  roles:
+  - ./roles/custom_tasks

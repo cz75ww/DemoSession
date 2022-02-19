@@ -1,0 +1,5 @@
+server_name:         "webserver01"
+path_file:           "./file/messages.txt"
+domain:              "demosession.com"
+web_user:            "ubuntu"
+check_public_ip:     "http://169.254.169.254/latest/meta-data/public-ipv4"

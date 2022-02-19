@@ -1,0 +1,78 @@
+---
+# Tasks to install and configure nginx web services 
+
+- name: hostname task
+  command: hostnamectl set-hostname "{{ server_name }}"
+  register: hostname_result
+
+- name: Applying patches on "{{ server_name }}"
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: Install packages
+  ansible.builtin.package:
+    name:
+      - "{{ item }}"
+    state: latest
+  with_items:
+    - python3-pip
+    - nginx
+    - net-tools
+
+- name: Install boto3
+  pip:
+    name: boto3
+
+- name: create web diretory
+  file:
+    path: /var/www/{{ domain }}
+    state: directory
+    mode: '0775'
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+
+- name: delete default nginx site
+  file:
+    path: /etc/nginx/sites-enabled/default
+    state: absent
+
+- name: copying ngix demosession file
+  ansible.builtin.template:
+    src:  demosession.conf.j2
+    dest: /etc/nginx/sites-enabled/{{ domain }}
+
+- name: Copy file with owner and permissions
+  ansible.builtin.copy:
+    src: ../file/index.html
+    dest: /var/www/{{ domain }}
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_user }}"
+    mode: '0644'
+  notify: 
+    - restart nginx service
+
+- name: Getting the public ip address
+  ansible.builtin.command:
+    /usr/bin/curl "{{ check_public_ip }}"
+  register: public_ip_result
+
+- name: Setting the public ip address in a variable
+  set_fact:
+    vm_public_ip: "{{ public_ip_result.stdout }}"
+
+- name: Checking webpage status
+  ansible.builtin.command:
+    /usr/bin/curl --write-out %{http_code} --silent --output /dev/null "{{ vm_public_ip }}"
+  ignore_errors: yes
+  register: web_page_status
+
+- name: Webpage restarted sucessfully
+  debug:
+    msg: " The web page has been started sucessfully RC: {{ web_page_status.stdout }}"
+  when: web_page_status.stdout == "200"
+
+- name: Webpage issue
+  debug:
+    msg: " The web page issue RC: {{ web_page_status.stdout }}"
+  when: web_page_status.stdout != "200"
