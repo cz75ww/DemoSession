@@ -45,3 +45,7 @@ $ git clone https://github.com/cz75ww/DemoSession.git
 $ Terraform init
 $ terraform apply --auto-approve
 ```
+## Web health check script
+#### The goal of this script is to check the health of webpage
+##### Requirements:
+* Create AWS SNS topic in order to send the email with the notification
