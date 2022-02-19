@@ -12,7 +12,7 @@
 * Terraform is designed to provision different infrastructure components.
 * Ansible is a configuration-management and application-deployment tool. 
 * It means that you’ll use Terraform first to create, for example, AWS resources (vpc, subnet and virtual machine) and then use Ansible to install necessary applications on that machine. But by default, these two are separate tools. In order to make them work together, we need to integrate Terraform-managed nodes with Ansible control nodes.
-*  [.TerraformAnsible](https://www.hashicorp.com/resources/ansible-terraform-better-together) -- Good page and video explaining why Ansible and HashiCorp are  better together.
+*  [TerraformAnsible](https://www.hashicorp.com/resources/ansible-terraform-better-together) -- Good page and video explaining why Ansible and HashiCorp are  better together.
 
 
 ## Terraform
