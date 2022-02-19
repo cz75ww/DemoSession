@@ -37,9 +37,6 @@
 
 ## Setup
 #### To run this project, perform this command lines:
-* In the terrform root folder change the webserver01.tf according your needs.
-* in the ansible roles vars folder, change the server name into main.yaml.
-./terraform/modules/acceptance-ubuntu-vm/ansible/roles/custom_tasks/vars/main.yaml
 $ git clone https://github.com/cz75ww/DemoSession.git
 $ Terraform init
 $ terraform apply --auto-approve
