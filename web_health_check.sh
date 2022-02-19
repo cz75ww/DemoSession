@@ -9,8 +9,8 @@
 # ================================================================                 
 
 AWSCLI_PROFILE="default"
-SNS_TOPIC_ARN="arn:aws:sns:us-east-1:076489258907:NotifyMe"
-SERVER_NAME="18.232.86.198"
+SNS_TOPIC_ARN="<Change Here>"
+SERVER_NAME="<SERVER IP>"
 SUBJECT_PREFIX="Web Application Health Check"
 WEB_OK="200"
 

@@ -7,7 +7,7 @@ module "acceptance-linux-vm" {
   cidr_subnet       = "10.1.0.0/24"
   ssh_user          = "ubuntu"
   internet_access   = "0.0.0.0/0"
-  aws_key_name      = "cz75ww"
-  aws_key_path      = "/home/fpsouza/.ssh/cz75ww.pem"
+  aws_key_name      = "<aws key name>"
+  aws_key_path      = "<aws key path>"
   ansible_acc_path  = "./modules/acceptance-ubuntu-vm/ansible/custom_tasks.yaml"
 }
