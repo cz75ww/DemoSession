@@ -14,4 +14,4 @@
 * It means that you’ll use Terraform first to create, for example, AWS resources (vpc, subnet and virtual machine) and then use Ansible to install necessary applications on that machine. But by default, these two are separate tools. In order to make them work together, we need to integrate Terraform-managed nodes with Ansible control nodes.
 
 ## Terraform
-### in order to deploy the resources in cloud (aws) layer the terraform will create the following resources accordingly:
+#### In order to deploy the AWS resources,terraform will create the following resources:
