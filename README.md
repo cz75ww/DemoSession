@@ -1,2 +1,2 @@
-# DemoSession to deploy new webserver (Nginx)
+# Demo session to deploy new webserver (Nginx)
 
