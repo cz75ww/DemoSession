@@ -48,4 +48,6 @@ $ terraform apply --auto-approve
 ## Web health check script
 #### The goal of this script is to check the health of webpage
 ##### Requirements:
-* Create AWS SNS topic in order to send the email with the notification
+* Create AWS SNS topic in order to send the email with the notification. [CreateSNSTopic](https://docs.aws.amazon.com/sns/latest/dg/sns-create-topic.html)
+* AWS Cli installed on job server that will be run the script. For example, linux cron
+* AWS profile configured
