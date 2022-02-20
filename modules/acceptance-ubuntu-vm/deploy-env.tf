@@ -65,31 +65,15 @@ resource "aws_security_group" "PublicSG" {
   name   = "DemosessionSG"
   vpc_id = aws_vpc.vpc.id
 
-  # SSH access from  VPC
-  ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = [var.internet_access]
+  dynamic "ingress" {
+   for_each = var.ingress_ports
+   content {
+     from_port   = ingress.value
+     to_port     = ingress.value
+     protocol    = "tcp"
+     cidr_blocks = [var.internet_access]
+   }
   }
-
-  # HTTP access from VPC
-  ingress {
-    from_port   = 80
-    to_port     = 80
-    protocol    = "tcp"
-    cidr_blocks = [var.internet_access]
-  }
-
-  # HTTPS access from VPC
-  ingress {
-    from_port   = 8080
-    to_port     = 8080
-    protocol    = "tcp"
-    cidr_blocks = [var.internet_access]
-  }
-
-  # ICMP access from VPC
   ingress {
     from_port = -1
     to_port = -1

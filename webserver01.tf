@@ -10,4 +10,5 @@ module "acceptance-linux-vm" {
   aws_key_name      = "<aws key name>"
   aws_key_path      = "<aws key path>"
   ansible_acc_path  = "./modules/acceptance-ubuntu-vm/ansible/custom_tasks.yaml"
+  ingress_ports     = [22, 80, 8080]
 }

@@ -41,3 +41,8 @@ variable "ansible_acc_path" {
 variable "server_tag_name" {
   description = "Server tag name on VPC"
 }
+
+variable "ingress_ports" {
+  description = "Ingress rule for Public SG"
+  type        = list
+}
