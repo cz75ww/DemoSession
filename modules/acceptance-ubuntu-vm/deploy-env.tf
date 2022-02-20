@@ -62,10 +62,10 @@ resource "aws_route_table_association" "rta_subnet_public" {
 }
 
 resource "aws_security_group" "PublicSG" {
-  name   = "sg_22"
+  name   = "DemosessionSG"
   vpc_id = aws_vpc.vpc.id
 
-  # SSH access from the VPC
+  # SSH access from  VPC
   ingress {
     from_port   = 22
     to_port     = 22
@@ -73,6 +73,7 @@ resource "aws_security_group" "PublicSG" {
     cidr_blocks = [var.internet_access]
   }
 
+  # HTTP access from VPC
   ingress {
     from_port   = 80
     to_port     = 80
@@ -80,11 +81,19 @@ resource "aws_security_group" "PublicSG" {
     cidr_blocks = [var.internet_access]
   }
 
-
+  # HTTPS access from VPC
   ingress {
     from_port   = 8080
     to_port     = 8080
     protocol    = "tcp"
+    cidr_blocks = [var.internet_access]
+  }
+
+  # ICMP access from VPC
+  ingress {
+    from_port = -1
+    to_port = -1
+    protocol = "icmp"
     cidr_blocks = [var.internet_access]
   }
 

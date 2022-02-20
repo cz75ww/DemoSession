@@ -21,8 +21,9 @@
 * Public Subnet
 * Internet Gatway
 * Route Table
-* Public Security Group (Firewall rules for ssh and http protocols)
+* Public Security Group (Firewall rules for ssh,icmp, https and http protocols)
 * Run Ansible playbook tasks
+### As a good practice, keep your terraform.tfstate file in a backend - [TerraformBackend](https://www.terraform.io/language/settings/backends)
 
 ## Ansible
 #### To install the applications, packages and apply the following settings:
@@ -36,7 +37,7 @@
 *  Verify if the webpage has been started successfully
 
 ## Setup
-#### To run this project, perform this command lines:
+#### To run this project, perform the command lines:
 * In the terrform root folder change the webserver01.tf according your needs.
 * in the ansible roles vars folder, change the server name into main.yaml.
 ./terraform/modules/acceptance-ubuntu-vm/ansible/roles/custom_tasks/vars/main.yaml
